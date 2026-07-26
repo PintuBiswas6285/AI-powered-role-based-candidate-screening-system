@@ -1,0 +1,13 @@
+Alex Kumar
+AI/ML Engineer
+
+Skills: Python, FastAPI, SQL, pandas, numpy, scikit-learn, machine learning, NLP, RAG, vector database, Docker, Git.
+
+Experience:
+Built a retrieval augmented chatbot for HR policy search using document chunking, embeddings, semantic retrieval, and grounded answer generation.
+Created classification models for support ticket routing and evaluated them with precision, recall, F1 score, and confusion matrices.
+Deployed REST APIs for model inference using FastAPI and SQLite-backed experiment metadata.
+
+Projects:
+Candidate analytics dashboard for recruitment workflows.
+Resume parsing prototype using keyword extraction and text normalization.

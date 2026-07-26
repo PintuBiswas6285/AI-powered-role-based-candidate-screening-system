@@ -1,0 +1,7 @@
+A real interview system needs session management, state transitions, and durable records of each question and answer. The backend should orchestrate file upload, resume parsing, profile extraction, retrieval, question generation, answer storage, scoring, and final summary. Each stage should be independently testable.
+
+Modular architecture separates API routes, schemas, models, services, and configuration. This separation lets engineers replace a local embedding implementation with a hosted embedding provider or replace SQLite with PostgreSQL without rewriting the UI flow. Dependency injection helps isolate database sessions and service dependencies.
+
+Asynchronous work may be useful for expensive tasks such as PDF parsing, embedding generation, long LLM calls, and report generation. For small assignments these can be synchronous, but production systems often use task queues such as Celery, RQ, or cloud-native queue workers to keep APIs responsive.
+
+Observability includes structured logs, metrics, traces, and clear errors. For a candidate screening product, traceability is especially important because reviewers need to inspect which retrieved context caused each question, what the candidate answered, and how the final summary was produced.

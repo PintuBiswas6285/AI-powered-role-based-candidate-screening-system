@@ -1,0 +1,9 @@
+Backend engineering focuses on reliable server-side systems, APIs, persistence, security, and integration. A strong backend candidate should understand HTTP, REST, authentication, authorization, validation, error handling, logging, database transactions, indexing, caching, background jobs, and deployment.
+
+API design should expose clear resources and workflows. Good APIs use meaningful status codes, stable schemas, pagination for large collections, idempotency for retryable writes, and robust validation. Backend services should keep business logic separate from transport concerns so the system remains maintainable and testable.
+
+Database design requires understanding entities, relationships, constraints, normalization, indexes, migrations, and transaction isolation. SQL databases are strong for structured data and consistency. NoSQL stores may be useful when access patterns, schema flexibility, or scale requirements justify them. Candidates should be able to explain trade-offs rather than choose a database by popularity.
+
+Scalability depends on profiling bottlenecks and applying targeted techniques. Common approaches include caching, connection pooling, asynchronous processing, queue-based workflows, read replicas, partitioning, and horizontal scaling. Reliability requires timeouts, retries with backoff, circuit breakers, health checks, observability, and graceful degradation.
+
+Security is part of backend design. User inputs must be validated, secrets must live in environment variables or managed secret stores, and authentication tokens must be handled carefully. Systems should avoid leaking sensitive data in logs, should enforce least privilege, and should consider rate limiting for abuse protection.
