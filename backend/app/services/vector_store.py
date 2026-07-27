@@ -52,15 +52,6 @@ class VectorStore:
         self.rebuild()
 
     def rebuild(self) -> None:
-        print("=== REBUILD STARTED ===")
-        
-        
-        print("\nROLE:", role)
-        print("DIRECTORY:", role_dir.resolve())
-
-        print("ALL FILES:")
-        for file in role_dir.iterdir():
-            print(file.name)
         
         self.path.parent.mkdir(parents=True, exist_ok=True)
         
