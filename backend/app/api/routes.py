@@ -32,7 +32,6 @@ def health() -> dict:
 def get_roles() -> RoleResponse:
     return RoleResponse(roles=vector_store.roles())
 
-
 @router.post("/sessions", response_model=SessionCreateResponse)
 async def create_session(
     target_role: str = Form(...),
@@ -62,7 +61,6 @@ async def create_session(
         extracted_profile=session.extracted_profile,
         first_question=serialize_question(first_turn),
     )
-
 
 @router.post("/sessions/{session_id}/turns/{turn_id}/answer", response_model=AnswerResponse)
 def answer_question(
@@ -105,7 +103,6 @@ def answer_question(
             next_question=None,
             session_complete=True,
         )
-
     next_turn = create_next_turn(db, session, last_score=score)
     return AnswerResponse(
         saved_turn_id=turn.id,
@@ -114,7 +111,6 @@ def answer_question(
         next_question=serialize_question(next_turn),
         session_complete=False,
     )
-
 
 @router.get("/sessions/{session_id}", response_model=SessionSummaryResponse)
 def get_session(session_id: int, db: Session = Depends(get_db)) -> SessionSummaryResponse:
@@ -152,7 +148,7 @@ def create_next_turn(db: Session, session: InterviewSession, last_score: float |
     print("=" * 100)
 
     if not chunks:
-        print("❌ WARNING: No chunks were retrieved from the Knowledge Base.")
+        print("no chunks from the Knowledge Base.")
     else:
         for index, chunk in enumerate(chunks, start=1):
             print(f"\nChunk #{index}")

@@ -40,21 +40,24 @@ function App() {
 React.useEffect(() => {
   fetchRoles()
   .then((items) => {
-      // ▼▼ This is the replacement for your original code ▼▼
       const availableRoles =
         Array.isArray(items) && items.length > 0
           ? items
           : DEFAULT_ROLES;
 
-      setRoles(availableRoles);
-      setSelectedRole(availableRoles[0]);
-      // ▲▲ End of replacement ▲▲
+        setRoles(availableRoles);
+        setSelectedRole("");
+
+//      setRoles(availableRoles);
+  //    setSelectedRole(availableRoles[0]);
   })
     .catch((err) => {
       console.warn("Unable to fetch roles. Using default roles.", err);
 
       setRoles(DEFAULT_ROLES);
-      setSelectedRole(DEFAULT_ROLES[0]);
+      setSelectedRole("");
+      //setRoles(DEFAULT_ROLES);
+      //setSelectedRole(DEFAULT_ROLES[0]);
     });
 }, []);
 
@@ -148,7 +151,8 @@ React.useEffect(() => {
             <label>
               Target role
               <select value={selectedRole} onChange={(event) => setSelectedRole(event.target.value)}>
-                {roles.map((role) => (
+              <option value="" disabled>Select a role</option>
+              {roles.map((role) => (
                   <option key={role} value={role}>
                     {role}
                   </option>

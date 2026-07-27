@@ -3,9 +3,7 @@ import math
 
 from app.services.text_processing import tokenize
 
-
 class HashingEmbedder:
-    """Deterministic local embedding fallback using signed feature hashing."""
 
     def __init__(self, dimensions: int = 384):
         self.dimensions = dimensions
