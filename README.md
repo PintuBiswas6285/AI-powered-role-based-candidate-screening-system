@@ -1,6 +1,6 @@
 # AI-Powered Role-Based Candidate Screening System
 
-This project implements the PGAGI AI/ML & Backend Intern assignment: a role-based technical interview simulator powered by a modular RAG pipeline.
+A role-based technical interview simulator powered by a modular RAG pipeline.
 
 ## Tech Stack
 

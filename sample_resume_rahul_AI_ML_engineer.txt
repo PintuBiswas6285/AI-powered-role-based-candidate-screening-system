@@ -1,4 +1,4 @@
-Alex Kumar
+rahul Kumar
 AI/ML Engineer
 
 Skills: Python, FastAPI, SQL, pandas, numpy, scikit-learn, machine learning, NLP, RAG, vector database, Docker, Git.
