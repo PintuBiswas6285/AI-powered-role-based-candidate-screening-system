@@ -74,6 +74,8 @@ class VectorStore:
                         }
                     )
             print("Total records built:", len(records))
+            
+            print("Finished chunking.")
         self.records = records
         self.path.write_text(json.dumps(records, indent=2), encoding="utf-8")
 
@@ -81,6 +83,7 @@ class VectorStore:
         return sorted({record["role"] for record in self.records})
 
     def search(self, role: str, query: str, *, top_k: int = 4) -> list[RetrievedChunk]:
+        
         role = role.lower()
         query_vector = self.embedder.embed(query)
         candidates = []
