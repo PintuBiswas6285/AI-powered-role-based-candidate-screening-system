@@ -1,7 +1,7 @@
 import json
 from dataclasses import dataclass
 from pathlib import Path
-print("******** LOADED vector_store.py ********")
+#print("******** LOADED vector_store.py ********")
 from app.core.config import get_settings
 from app.services.embedding import HashingEmbedder, cosine_similarity
 from app.services.text_processing import chunk_text, read_text_file
@@ -30,24 +30,24 @@ class VectorStore:
         settings = get_settings()
         self.path = settings.vector_store_path
         self.kb_dir = settings.knowledge_base_dir
-        print("Knowledge Base Directory:", self.kb_dir)
-        print("Vector Store File:", self.path)
+        #print("Knowledge Base Directory:", self.kb_dir)
+       # print("Vector Store File:", self.path)
         self.embedder = HashingEmbedder(settings.embedding_dimensions)
         self.records: list[dict] = []
         self.load_or_build()
         
 
     def load_or_build(self) -> None:
-        print("load_or_build() called")
-        print("Vector Store Path:", self.path.resolve())
+        #print("load_or_build() called")
+        #print("Vector Store Path:", self.path.resolve())
         if self.path.exists():
             self.records = json.loads(self.path.read_text(encoding="utf-8"))
 
-            print("Loaded records:", len(self.records))
+           # print("Loaded records:", len(self.records))
 
             return
         
-        print("Calling rebuild()")
+        #print("Calling rebuild()")
         
         self.rebuild()
 
@@ -55,8 +55,8 @@ class VectorStore:
         
         self.path.parent.mkdir(parents=True, exist_ok=True)
         
-        print("Knowledge Base Exists:", self.kb_dir.exists())
-        print("Knowledge Base Path:", self.kb_dir.resolve())
+        #print("Knowledge Base Exists:", self.kb_dir.exists())
+        #print("Knowledge Base Path:", self.kb_dir.resolve())
         records: list[dict] = []
         for role_dir in sorted(self.kb_dir.glob("*")):
             if not role_dir.is_dir():
@@ -64,7 +64,7 @@ class VectorStore:
             role = role_dir.name.replace("_", " ")
             for source_path in sorted(list(role_dir.glob("*.txt")) + list(role_dir.glob("*.pdf"))):
                 print(f"\nSTART READING: {source_path.name}")
-                print("INDEXING:", source_path.name)
+                #print("INDEXING:", source_path.name)
                     
                     
                     
@@ -87,13 +87,13 @@ class VectorStore:
                             "embedding": self.embedder.embed(chunk),
                         }
                     )
-            print("Total records built:", len(records))
+            #print("Total records built:", len(records))
             
-        print("Finished chunking.")
+        #print("Finished chunking.")
         self.records = records
-        print("Assigned self.records")
+       # print("Assigned self.records")
         self.path.write_text(json.dumps(records, indent=2), encoding="utf-8")
-        print("vector_store.json written successfully") 
+        #print("vector_store.json written successfully") 
 
     def roles(self) -> list[str]:
         return sorted({record["role"] for record in self.records})
