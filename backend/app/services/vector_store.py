@@ -63,7 +63,21 @@ class VectorStore:
                 continue
             role = role_dir.name.replace("_", " ")
             for source_path in sorted(list(role_dir.glob("*.txt")) + list(role_dir.glob("*.pdf"))):
-                for index, chunk in enumerate(chunk_text(read_source(source_path))):
+                print(f"\nSTART READING: {source_path.name}")
+                print("INDEXING:", source_path.name)
+                    
+                    
+                    
+                text = read_source(source_path)
+                print(f"FINISHED READING: {source_path.name}")
+
+                chunks = chunk_text(text)
+                print(f"FINISHED CHUNKING: {source_path.name}")
+
+                for index, chunk in enumerate(chunks):    
+                
+                    
+                    
                     records.append(
                         {
                             "role": role,
@@ -75,9 +89,11 @@ class VectorStore:
                     )
             print("Total records built:", len(records))
             
-            print("Finished chunking.")
+        print("Finished chunking.")
         self.records = records
+        print("Assigned self.records")
         self.path.write_text(json.dumps(records, indent=2), encoding="utf-8")
+        print("vector_store.json written successfully") 
 
     def roles(self) -> list[str]:
         return sorted({record["role"] for record in self.records})
