@@ -47,7 +47,9 @@ python -m venv .venv
 .venv\Scripts\activate
 python -m pip install -r requirements.txt
 copy .env.example .env
-uvicorn app.main:app --reload
+cd app
+fastapi dev main.py
+
 ```
 
 The API runs at `http://localhost:8000`. API docs are available at `http://localhost:8000/docs`.
