@@ -63,16 +63,16 @@ class VectorStore:
                 continue
             role = role_dir.name.replace("_", " ")
             for source_path in sorted(list(role_dir.glob("*.txt")) + list(role_dir.glob("*.pdf"))):
-                print(f"\nSTART READING: {source_path.name}")
+                #print(f"\nSTART READING: {source_path.name}")
                 #print("INDEXING:", source_path.name)
                     
                     
                     
                 text = read_source(source_path)
-                print(f"FINISHED READING: {source_path.name}")
+                #print(f"FINISHED READING: {source_path.name}")
 
                 chunks = chunk_text(text)
-                print(f"FINISHED CHUNKING: {source_path.name}")
+                #print(f"FINISHED CHUNKING: {source_path.name}")
 
                 for index, chunk in enumerate(chunks):    
                 
